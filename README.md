@@ -46,7 +46,7 @@ DiMHepy.py -ia test/dataset7Eubac/ANIb_alignment_lengths.tab
            -ip test/dataset7Eubac/ANIb_percentage_identity.tab 
            -oss test/dataset7Eubac/ds7Eubac.png
 ```
-![7 genomes analysis test data](test/dataset7Eubac/dataset7Eubac.png "7 genomes analysis")
+![7 genomes analysis test data](test/dataset7Eubac/ds7Eubac.png "7 genomes analysis")
 
 ```
 DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab 
