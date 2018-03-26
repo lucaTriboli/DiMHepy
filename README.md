@@ -4,12 +4,9 @@ DiMHepy is a Python3 module that provide an alternative view of the outputs prod
 
 ## Installation
 
+You can simply download the github folder and launch the python file to use my software!
 
-
-## Testing DiMHepy
-
-
-## Running DiMHepy
+## Running/Testing DiMHepy
 
 ### Script: `DiMHepy.py`
 The `DiMHepy.py` script enables straightforward ANI output rearrangements at the command-line, and uses the `pyani` module behind the scenes.
@@ -44,7 +41,7 @@ DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab
 
 ## Dependencies
 
-for a correct operation of DiMHepy you have to run there command in the command line:
+To use DiMHepy in its basic version you have to run these command in the command line:
 ```
 pip3 install numpy
 pip3 install scipy
@@ -53,5 +50,8 @@ pip3 install biopython
 pip3 install pandas
 pip3 install seaborn
 ```
-
-
+For the advanced version (using pyani in the background) you have to install pyani and mummer too (https://github.com/widdowquinn/pyani)
+```
+pip3 install pyani
+sudo apt-get install mummer
+```
