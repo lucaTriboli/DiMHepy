@@ -34,19 +34,6 @@ Options and arguments (and corresponding environment variables):
 ```
 
 The graphical output below was generated with the command-line:
-```
-DiMHepy.py -ia test/dataset19/ANIb_alignment_lengths.tab 
-           -ip test/dataset19/ANIb_percentage_identity.tab 
-           -oss test/dataset19/ds19.png
-```
-![19 genomes analysis test data](test/dataset19/ds19.png "19 genomes analysis")
-
-```
-DiMHepy.py -ia test/dataset7Eubac/ANIb_alignment_lengths.tab 
-           -ip test/dataset7Eubac/ANIb_percentage_identity.tab 
-           -oss test/dataset7Eubac/ds7Eubac.png
-```
-![7 genomes analysis test data](test/dataset7Eubac/ds7Eubac.png "7 genomes analysis")
 
 ```
 DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab 
@@ -56,4 +43,15 @@ DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab
 ![5 genomes analysis test data](test/dataset5Other/dataset5Other.png "5 genomes analysis")
 
 ## Dependencies
+
+for a correct operation of DiMHepy you have to run there command in the command line:
+```
+pip3 install numpy
+pip3 install scipy
+pip3 install matplotlib
+pip3 install biopython
+pip3 install pandas
+pip3 install seaborn
+```
+
 
