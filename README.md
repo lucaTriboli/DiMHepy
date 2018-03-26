@@ -35,9 +35,18 @@ Options and arguments (and corresponding environment variables):
 
 The graphical output below was generated with the command-line:
 ```
-DiMHepy.py -ia test/dataset19/ANIb_alignment_lengths.tab -ip test/dataset19/ANIb_percentage_identity.tab -oss test/dataset19/ds19.png
+DiMHepy.py -ia test/dataset19/ANIb_alignment_lengths.tab 
+           -ip test/dataset19/ANIb_percentage_identity.tab 
+           -oss test/dataset19/ds19.png
 ```
 ![19 genomes analysis test data](test/dataset19/dataset19.png "19 genomes analysis")
+
+```
+DiMHepy.py -ia test/dataset7Eubac/ANIb_alignment_lengths.tab 
+           -ip test/dataset7Eubac/ANIb_percentage_identity.tab 
+           -oss test/dataset7Eubac/ds7Eubac.png
+```
+![7 genomes analysis test data](test/dataset7Eubac/dataset7Eubac.png "7 genomes analysis")
 
 ## Dependencies
 
