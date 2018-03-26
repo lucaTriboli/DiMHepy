@@ -32,5 +32,12 @@ Options and arguments (and corresponding environment variables):
 
 […]
 ```
+
+The graphical output below was generated with the command-line:
+```
+DiMHepy.py -ia tests/dataset19genomes/AN
+```
+
+
 ## Dependencies
 
