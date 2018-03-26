@@ -48,5 +48,12 @@ DiMHepy.py -ia test/dataset7Eubac/ANIb_alignment_lengths.tab
 ```
 ![7 genomes analysis test data](test/dataset7Eubac/dataset7Eubac.png "7 genomes analysis")
 
+```
+DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab 
+           -ip test/dataset5Other/ANIb_percentage_identity.tab 
+           -oss test/dataset5Other/ds5Other.png
+```
+![5 genomes analysis test data](test/dataset5Other/dataset5Other.png "5 genomes analysis")
+
 ## Dependencies
 
