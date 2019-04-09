@@ -165,8 +165,8 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     
     for i in range(NUMERO_CAMPIONI):
         testo=nameList[LowerNewIndexOrder[i]]
-        underbarIndex=testo.index('_')
-        testoItalic=testo[:(underbarIndex+1)]
+        #underbarIndex=testo.index('_')
+        #testoItalic=testo[:(underbarIndex+1)]
         #print(testoItalic)
         if i%2==1:
             l1 = mlines.Line2D([0.125+scalinodx+0.01, puntomedio+(puntomedio-0.105-scalinodx)], [lineafissa, lineafissa], transform=outputWindow.transFigure, figure=outputWindow, color='lightgrey', lw='2')
