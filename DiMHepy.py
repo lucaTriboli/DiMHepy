@@ -232,6 +232,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     PLT.show()
     
 elif (parameterList.count('-h')==1 or parameterList.count('--help')==1):
+    print('DiMHepy is a software by Luca Triboli, version 1.0')
     print('Usage: python3 DiMHepy.py -i pyani_INDIR    -o pyani_OUTDIR    -oss DiMHepy_outImage [option] [arg]')
     print('    or python3 DiMHepy.py -ia AlignmentFile -ip PercentageFile -oss DiMHepy_outImage [option] [arg]')
     print('Options and arguments (and corresponding environment variables):')
@@ -243,4 +244,7 @@ elif (parameterList.count('-h')==1 or parameterList.count('--help')==1):
     print('-oss arg : insert the file name of the output image')
     print('-s       : show output png file (only in graphic environment)')
     print('-d       : display output interactive window (only in graphic environment)')
+    
+elif (parameterList.count('-v')==1 or parameterList.count('--version')==1):
+    print('Version 1.0')
 
