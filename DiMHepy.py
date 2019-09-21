@@ -237,6 +237,7 @@ elif (parameterList.count('-h')==1 or parameterList.count('--help')==1):
     print('    or python3 DiMHepy.py -ia AlignmentFile -ip PercentageFile -oss DiMHepy_outImage [option] [arg]')
     print('Options and arguments (and corresponding environment variables):')
     print('-h       : print this help message and exit (also --help)')
+    print('-v       : print version number (also --version)')
     print('-i arg   : insert the INDIR of pyani')
     print('-o arg   : insert the OUTDIR of pyani')
     print('-ia arg  : insert the file name of alignment lengths')
