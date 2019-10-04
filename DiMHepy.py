@@ -18,12 +18,11 @@ import matplotlib.lines as mlines
 import tkinter.messagebox
 
 ###########################################################################################################
-#Funzioni 
-
-
-#Funzione che legge le matrici da file, crea la matrice percentageIdentityMatrix con i valori della percentage_identity 
-#la matrice alignmentLengthsMatrix con i valori della alignment_lenght 
-#nameList con i nomi dei campioni
+#Functions
+ 
+#Function that read matrices from file, create percentageIdentityMatrix with percentage_identity matrix values,
+#alignmentLengthsMatrix with alignment_length matrix values and
+#nameList with samples names
 def MatrixFromFile(NameFile):
     percentageIdentityMatrix=[]
     nameList=[]
@@ -38,8 +37,6 @@ def MatrixFromFile(NameFile):
     
 
 def onclick(event):
-    #print('Value:')
-    #print(event.x,  event.y)
     if 151<event.y<640:
         if 177<event.x<670:
             dfmClicked=dataFrameMatrix1
@@ -62,7 +59,7 @@ def onclick(event):
             tkinter.messagebox.showinfo("Title",testo)
     
 #############################################################################################################
-#Leggo i parametri da terminale, li salvo in parameterList e poi creo le 2 matrici e la lista dei campioni
+#Now I can read command line parameters, save them in parameterList, then create 2 matrices and the samples list 
 
 
 parameterList = sys.argv[1:]
@@ -92,13 +89,12 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     print('Meanwhile, the number of genomes you put in is:', NUMERO_CAMPIONI)
     
     #############################################################################################################
-    #genero la matrice delle distanze sopra e sotto
-    #riordino in base alla lowerHalf
+    #Build the upper and lower half matrix and reorder based on lower half
     dataFrameMatrix1 = pd.DataFrame(percentageIdentityMatrix)
     dataFrameMatrix2 = pd.DataFrame(alignmentLengthsMatrix)
 
 
-    #trovo il nuovo ordine per l'heatmap lower
+    #I find the new order for lower half heatmap
     dataFrameMatrix1_corr = dataFrameMatrix1.T.corr()
     dataFrameMatrix1_dism = 1 - dataFrameMatrix1_corr
     linkage = hc.linkage(sp.distance.squareform(dataFrameMatrix1_dism), method='ward')
@@ -106,12 +102,12 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     PLT.close()
     LowerNewIndexOrder = gLower.dendrogram_row.reordered_ind
 
-    #trovo il nuovo ordine per l'heatmap upper
+    #I find the new order for upper half heatmap
     dataFrameMatrix2_corr = dataFrameMatrix2.T.corr()
     dataFrameMatrix2_dism = 1 - dataFrameMatrix2_corr
     linkage2 = hc.linkage(sp.distance.squareform(dataFrameMatrix2_dism), method='ward')
     
-    #creo le matrici per mascherare la parte sopra della prima e sotto della seconda heatmap
+    #I create matrices to mask the upper half for the first matrix and the lower half for the second one
     maskMatrix1 = NP.triu(dataFrameMatrix1, k=1)
     dataFrameMatrix1 = NP.ma.masked_where(maskMatrix1, dataFrameMatrix1)
 
@@ -120,7 +116,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     dataFrameMatrix2 = NP.ma.masked_where(maskMatrix2, dataFrameMatrix2)
 
 
-    #riordino i dati delle matrici in base all'ordine della lower half
+    #I reorder matrices data based on lower half order
     for i in range(NUMERO_CAMPIONI):
         for j in range(NUMERO_CAMPIONI):
             if i<j:
@@ -129,7 +125,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
                 dataFrameMatrix1[i, j]=percentageIdentityMatrix[LowerNewIndexOrder[i]][LowerNewIndexOrder[j]]
 
     #############################################################################################################
-    #preparo la finestra di output (firstlot per la matrice upper, thirdSlot per la matrice lower e secondSlot per il testo)
+    #I prepare output window (firstSlot for upper matrix, thirdSlot for lower matrix and secondSlot for text)
 
     if NUMERO_CAMPIONI<=30:
         imgSize = (14, 8)
@@ -144,8 +140,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     
     cid = outputWindow.canvas.mpl_connect('button_press_event', onclick)
 
-
-    #mi occupo di scrivere le stringhe nella finestra di output
+    #I write strings in output window
     iniziosx=0.125+0.35/NUMERO_CAMPIONI
     scalinoup=0.3/NUMERO_CAMPIONI
     scalinodx=0.35/NUMERO_CAMPIONI
@@ -165,9 +160,6 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     
     for i in range(NUMERO_CAMPIONI):
         testo=nameList[LowerNewIndexOrder[i]]
-        #underbarIndex=testo.index('_')
-        #testoItalic=testo[:(underbarIndex+1)]
-        #print(testoItalic)
         if i%2==1:
             l1 = mlines.Line2D([0.125+scalinodx+0.01, puntomedio+(puntomedio-0.105-scalinodx)], [lineafissa, lineafissa], transform=outputWindow.transFigure, figure=outputWindow, color='lightgrey', lw='2')
             outputWindow.lines.extend([l1])
@@ -181,7 +173,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     
     
     ##############################################################################################
-    #mostro l'output delle 2 matrici di distanza sopra e sotto e sistemo le colormaps e le colorbar
+    #show output from 2 distance matrices below and under the text (samples names) and adjust colorbars and colormaps
 
     vmax = 4.0
     cmap = LinearSegmentedColormap.from_list('mycmap', [(0 / vmax, 'blue'),
@@ -222,7 +214,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
 
 
     ##############################################################################################
-    #stampo l'output
+    #print output
     print("All operations have been finished, here is your output:", outputName)
     PLT.savefig(outputName)
     if(parameterList.count('-s')==1):
@@ -247,5 +239,5 @@ elif (parameterList.count('-h')==1 or parameterList.count('--help')==1):
     print('-d       : display output interactive window (only in graphic environment)')
     
 elif (parameterList.count('-v')==1 or parameterList.count('--version')==1):
-    print('Version 1.0')
+    print('Version 1.1')
 
