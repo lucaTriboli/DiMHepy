@@ -6,6 +6,7 @@
 - [Testing `DiMHepy`](#testing-dimhepy)
 - [Running `DiMHepy`](#running-dimhepy)
 - [Dependencies](#dependencies)
+- [Licensing](#licensing)
 
 <!-- TOC -->
 
