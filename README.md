@@ -30,7 +30,6 @@ DiMHepy.py -ia test/dataset5Other/ANIb_alignment_lengths.tab
 
 ## Running `DiMHepy`
 
-### Script: `DiMHepy.py`
 The `DiMHepy.py` script enables straightforward ANI output rearrangements at the command-line, and uses the `pyani` module behind the scenes.
 
 You can get a summary of available command-line options with `DiMHepy.py -h`
