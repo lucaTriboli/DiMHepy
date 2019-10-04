@@ -1,6 +1,6 @@
 # README.md (DiMHepy)
 ## Overview
-DiMHepy is a Python3 module that provide an alternative view of the outputs produced by the software pyani.\n
+DiMHepy is a Python3 module that provide an alternative view of the outputs produced by the software pyani.
 If you use this tool, please cite our article: https://doi.org/10.1002/mbo3.938
 
 ## Installation
