@@ -69,6 +69,7 @@ pip3 install seaborn
 * **Biopython** http://www.biopython.org/
 * **Pandas** http://pandas.pydata.org/
 * **Seaborn** https://github.com/mwaskom/seaborn
+* **Mummer** http://mummer.sourceforge.net/
 
 For the advanced version (using pyani in the background) you have to install pyani and mummer too (https://github.com/widdowquinn/pyani)
 ```
