@@ -37,10 +37,12 @@ You can get a summary of available command-line options with `DiMHepy.py -h`
 
 ```
 $ DiMHepy.py -h
+DiMHepy is a software by Luca Triboli, version 1.0
 Usage: python3 DiMHepy.py -i pyani_INDIR    -o pyani_OUTDIR    -oss DiMHepy_outImage [option] [arg]
     or python3 DiMHepy.py -ia AlignmentFile -ip PercentageFile -oss DiMHepy_outImage [option] [arg]
 Options and arguments (and corresponding environment variables):
 -h       : print this help message and exit (also --help)
+-v       : print version number (also --version)
 -i arg   : insert the INDIR of pyani
 -o arg   : insert the OUTDIR of pyani
 -ia arg  : insert the file name of alignment lengths
@@ -48,6 +50,7 @@ Options and arguments (and corresponding environment variables):
 -oss arg : insert the file name of the output image
 -s       : show output png file (only in graphic environment)
 -d       : display output interactive window (only in graphic environment)
+-ignDiag : ignore Diagonal
 
 […]
 ```
