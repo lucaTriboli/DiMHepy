@@ -109,7 +109,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
     
     #I create matrices to mask the upper half for the first matrix and the lower half for the second one
     maskMatrix1 = NP.triu(dataFrameMatrix1, k=1)
-    dataFrameMatrix1 = NP.ma.masked_where(maskMatrix1, dataFrameMatrix1)
+    dataFrameMatrix1mask = NP.ma.masked_where(maskMatrix1, dataFrameMatrix1)
 
 
     maskMatrix2 = NP.tril(dataFrameMatrix2, k=-1)
@@ -122,7 +122,7 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
             if i<j:
                 dataFrameMatrix2[i, j]=alignmentLengthsMatrix[LowerNewIndexOrder[i]][LowerNewIndexOrder[j]]
             if i>j:
-                dataFrameMatrix1[i, j]=percentageIdentityMatrix[LowerNewIndexOrder[i]][LowerNewIndexOrder[j]]
+                dataFrameMatrix1mask[i, j]=percentageIdentityMatrix[LowerNewIndexOrder[i]][LowerNewIndexOrder[j]]
 
     #############################################################################################################
     #I prepare output window (firstSlot for upper matrix, thirdSlot for lower matrix and secondSlot for text)
@@ -185,10 +185,17 @@ if (parameterList.count('-i')==1 and parameterList.count('-o')==1) or (parameter
 
     colorBarLowerAxes = outputWindow.add_axes([0.04, 0.5, 0.01, 0.3])
     colorBarUpperAxes = outputWindow.add_axes([0.92, 0.5, 0.01, 0.3])
+    if(parameterList.count('-ignDiag')==1):
+        tmpDFM1=dataFrameMatrix1
+        for i in range(0,len(tmpDFM1)):
+            tmpDFM1[i][i]=sum(tmpDFM1[i])/len(tmpDFM1[i])
+        tmpDFM1mask = NP.ma.masked_where(maskMatrix1, tmpDFM1)
+        lowerMat = firstSlot.imshow(tmpDFM1mask, interpolation="nearest", cmap=cmap)
+    else:
+        lowerMat = firstSlot.imshow(dataFrameMatrix1mask, interpolation="nearest", cmap=cmap)
 
-    lowerMat = firstSlot.imshow(dataFrameMatrix1, interpolation="nearest", cmap=cmap)
     upperMat = thirdSlot.imshow(dataFrameMatrix2, interpolation="nearest", cmap=cmap)
-
+    
     cbarLower = outputWindow.colorbar(lowerMat, cax=colorBarLowerAxes)
     cbarLower.ax.set_title('A.N.I.')
     cbarUpper = outputWindow.colorbar(upperMat, cax=colorBarUpperAxes)
@@ -237,7 +244,8 @@ elif (parameterList.count('-h')==1 or parameterList.count('--help')==1):
     print('-oss arg : insert the file name of the output image')
     print('-s       : show output png file (only in graphic environment)')
     print('-d       : display output interactive window (only in graphic environment)')
-    
+    print('-ignDiag : ignore Diagonal')
+
 elif (parameterList.count('-v')==1 or parameterList.count('--version')==1):
     print('Version 1.1')
 
